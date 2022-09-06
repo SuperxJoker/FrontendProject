@@ -8,6 +8,7 @@ nav{
     position: sticky;
     font-family: 'Times New Roman', Times, serif;
     background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav-list{
@@ -27,7 +28,7 @@ nav{
 
     color:grey;
     text-decoration: none;
-    font-weight: bold;
+    
     font-size: 20px;
 }
 
@@ -54,6 +55,7 @@ nav{
     display: block;
     position: absolute;
     box-shadow: 0px 20px 100px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0,0,0,0.2);
 }
 
 @media screen and (max-width:768px) {
@@ -88,9 +90,8 @@ nav{
    color: grey;
    background-color: white;
    border: none;
-   font-weight: bold;
    letter-spacing: 3px;
-   font-family: 'Times New Roman', Times, serif;
+   font-family: inherit;
    
 }
 
@@ -101,12 +102,21 @@ nav{
 
 .icon-menu{
 
-    margin-left: 30rem;
+    margin-left: 20rem;
 }
 
 .center-bar{
     display: flex;
+    margin-left: 10rem;
   
+}
+
+i:hover {
+
+color:greenyellow;
+
+    
+
 }
 
 
