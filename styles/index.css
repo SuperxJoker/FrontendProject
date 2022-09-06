@@ -5,10 +5,11 @@
 }
 
 nav{
-    background-color: white;
+
+    background-color:white;
     position: fixed;
     width: 100%;
-    z-index: 999;
+   
     height: 65px;
     line-height: 65px;
     font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +18,7 @@ nav{
 nav .wrapper{
     position: relative;
     
-    padding: 0 30px;
+    padding: 0 30px ;
     
     display: flex;
     align-items: center;
@@ -31,7 +32,7 @@ nav .wrapper{
     display: inline-flex;
     justify-content: space-between;
     margin-left: 25rem;
-    color:darkgrey;
+    color:grey;
     gap:2rem;
     letter-spacing: 2px;
 
@@ -45,7 +46,7 @@ nav .wrapper{
 }
 
 .nav-links li a{
-    color: 	#303030;
+    color: 	grey;
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
@@ -59,7 +60,7 @@ nav .wrapper{
 }
 
 .nav-links .hover-services a:hover{
-    background: rgb(129, 127, 127);
+   
     color: whitesmoke;
 }
 
@@ -69,7 +70,7 @@ nav .wrapper{
     transition: all 0.2s;
     position: absolute;
     color: whitesmoke;
-    top:100px;
+    top:75px;
     background: #282828;
     width: 100%;
     left:0;
@@ -81,12 +82,19 @@ nav .wrapper{
     visibility: visible;
     opacity: 1;
     position: absolute;
-    top:100px;
+    top:75px;
     background: #282828;
     width: 100%;
     left:0
+    
+}
 
+.nav-links li.hover-services:hover{
+    transition: all 0.2s;
+    opacity: 1;
+    background-color: #282828;
 
+    
 }
 
 .dropdown-content .content{
@@ -152,7 +160,7 @@ nav .wrapper{
 
 i{
     color: #282828;
-    size: 1px;
+    
 }
 
 i:hover {
