@@ -204,7 +204,7 @@ label.mobile-item{
     overflow-y: auto;
     display:block;
     line-height: 40px;
-    box-shadow: 0 15px 15px rgba(0,0,0,0.15);
+   
 
     
   
@@ -308,5 +308,42 @@ label.mobile-item{
 
 
 
+}
+
+
+footer{
+
+    position: fixed;
+    bottom:0px;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    
+    
+
 
 }
+
+.main-content{
+    display: flex;
+    
+
+}
+footer h3{
+    color: #5a5a5a;
+}
+
+.main-content .box{
+    color: grey;
+    flex-basis: 50%
+    
+}
+
+footer a{
+    color:grey;
+    text-decoration: none;
+
+}
+
+
+
