@@ -77,6 +77,7 @@ nav .wrapper{
     background: #282828;
     width: 100%;
     left:0;
+    z-index: 999;
     
     
 }
@@ -271,6 +272,7 @@ label.mobile-item{
     overflow: hidden;
     width: 100%;
     left:0;
+    
     
     
     
