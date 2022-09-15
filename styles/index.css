@@ -218,6 +218,7 @@ label.mobile-item{
 @media screen and (max-width: 1300px){
     .wrapper .btn{
         display: block;
+        
     }
 
   .wrapper .nav-links{
@@ -475,4 +476,28 @@ footer a{
   #product1 .pro .btn-1:active{
     transform: scale(0.98);
   }
+
+  .shopping-cart::before{
+   
+    content: attr(data-product-count);
+    font-size: 12px;
+    background: yellowgreen;
+    color: #fff;
+    padding: 0 5px;
+   
+    
+    border-radius: 9px;
+  }
+
+
+  .heart-cart::before{
+   
+    content: attr(data-heart-count);
+    font-size: 12px;
+    background: yellowgreen;
+    color: #fff;
+    padding: 0 5px;
+    border-radius: 9px;
+  }
+
 
