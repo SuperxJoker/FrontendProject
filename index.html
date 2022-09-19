@@ -378,7 +378,8 @@
 
        <!--Slide images start-->
        <div class="slide first">
-        <img src="images/carusel1.jpg" alt="">
+        <img src="images/carusel1.jpg" alt="" id="active">
+        <button class="view"  ><a id="link" href="#product1" style="font-size:32px;color:white;text-decoration:none;" >View More</a></button>
 
        </div>
 
@@ -425,6 +426,20 @@
 
 
     <!--Image slider end-->
+
+    <script  type="text/javascript">
+
+      var counter = 1;
+      setInterval(function(){
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if(counter > 4){
+          counter= 1;
+        }
+      },5000);
+    </script>
+
+    
 
   <section id="product1" class="section-p1">
     <h2>Featued Products</h2>
@@ -740,6 +755,7 @@
 
 
     <script src="scripts/cart.js"></script>
+  
 </body>
 </html>
 
