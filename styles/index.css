@@ -624,3 +624,33 @@ footer a{
   }
 
 
+  #product1 .load-info{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+
+
+}
+
+#product1 .load-btn{
+    
+    background-color: yellowgreen;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border:1px solid yellowgreen;
+    padding: 20px 70px;
+    border-radius: 50px;
+    font-size: 20px;
+}
+
+#product1 .load-btn:active{
+    transform: scale(1.2);
+  }
+
+  #product1 .load-btn:hover{
+    background-color:rgb(105, 141, 33);
+    transition: 1s;
+    
+
+}
