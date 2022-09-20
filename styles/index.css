@@ -510,7 +510,8 @@ footer a{
     
     align-items: center;
    
-    width: 1200px;
+    width: 1825px;
+    height: 850px;
     overflow: hidden;
     
     
@@ -524,7 +525,6 @@ footer a{
     width: 540%;
     overflow: hidden;
     
-   
     
   }
 
@@ -537,19 +537,20 @@ footer a{
     
     width: 20%;
     transition: 2s;
+    
 
 }
 
 .slide img{
     
-    width: 1200px;
-
+    width: 1830px;
+    overflow: hidden;
 }
 
 
 .navigation-manual{
     position: absolute;
-    width: 1200px;
+    width: 1825px;
     margin-top: -40px;
     display: flex;
     justify-content: center;
@@ -564,7 +565,7 @@ footer a{
     cursor: pointer;
     transition: 1s;
     position: relative;
-    top: -100px;
+    top: -430px;
 
 
 }
@@ -598,7 +599,7 @@ footer a{
 
 .slide .view{
     position: relative;
-    top:-250px;
+    top:-500px;
     right:-90px;
     background-color: transparent;
     padding: 20px 70px;
@@ -621,3 +622,5 @@ footer a{
 .slide .view:active{
     transform: scale(1.2);
   }
+
+
