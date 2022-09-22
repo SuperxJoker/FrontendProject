@@ -676,40 +676,72 @@ footer a{
 
 
 
-.section-p1{
-    padding: 40px 80px;
+ .section-p2{
+    
     font-family: Arial, Helvetica, sans-serif;
+    padding: 40px 80px;
+    
 }
-#product2{
+#product2 {
     text-align: center;
 }
 
-#product2 .pro-container{
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-    gap:247px;
-    
-    
 
-
-
-}
-
-#product2 .pro{
-    width: 23%;
-    min-width: 250px;
+.swiper {
+    top:20px;
+    width: 100%;
+    height: 100%;
    
-    border: 1px solid rgb(179, 176, 176);
+  }
+
+
+  .swiper-slide {
+   
+    width: 80%;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: space-between;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+   
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+ 
+
+
+
+#product2 .pro2 {
+   
+   
+   padding-top: 20px;
     border-radius: 15px;
     cursor: pointer;
-    margin: 15px 0;
     
-    position: relative;
+    
+    
 
 }
 
-#product2 .pro:hover {
+#product2 .pro2:hover {
 
     /*opacity: 0.3;*/
     background: rgb(71,228,83);
@@ -719,19 +751,19 @@ footer a{
     
 }
 
-#product2 .pro:hover img{
+#product2 .pro2:hover img{
     opacity: 0.3;
     
 }
 
 
-#product2 .pro:hover .btn{
+#product2 .pro2:hover .btn{
     visibility: visible;
     overflow-y: hidden;
 }
 
-#product2 .pro img{
-    width: 100%;
+#product2 .pro2 img{
+  
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     
@@ -739,7 +771,7 @@ footer a{
     
     
 }
-#product2 .pro .btn {
+#product2 .pro2 .btn {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -747,22 +779,23 @@ footer a{
     border: hidden;
     top:-350px;
     visibility: hidden;
+    
        
   }
 
-  #product2 .pro .btn:hover{
+  #product2 .pro2 .btn:hover{
     background-color: rgb(221, 220, 219);
   }
 
-  #product2 .pro .btn:active{
+  #product2 .pro2 .btn:active{
     transform: scale(0.98);
   }
 
-  #product2 .pro h3{
+  #product2 .pro2 h3{
     padding-top: 40px;
   }
 
-  #product2 .pro .btn-1{
+  #product2 .pro2 .btn-1{
     font-family: Arial, Helvetica, sans-serif;
     margin-top:30px;
     width: 150px;
@@ -770,14 +803,15 @@ footer a{
     border: 1px solid grey;
     border-radius: 10px;
     background-color: white;
+    position: relative;
 
   }
 
-  #product2 .pro .btn-1:hover{
+  #product2 .pro2 .btn-1:hover{
     background-color:grey;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
-  #product2 .pro .btn-1:active{
+  #product2 .pro2 .btn-1:active{
     transform: scale(0.98);
   }
