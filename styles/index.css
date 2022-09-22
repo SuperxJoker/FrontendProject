@@ -684,6 +684,7 @@ footer a{
 }
 #product2 {
     text-align: center;
+    margin-bottom: 100px;
 }
 
 
@@ -691,6 +692,7 @@ footer a{
     top:20px;
     width: 100%;
     height: 100%;
+    
    
   }
 
@@ -701,7 +703,7 @@ footer a{
     text-align: center;
     font-size: 18px;
     background: #fff;
-    
+   
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -814,4 +816,26 @@ footer a{
 
   #product2 .pro2 .btn-1:active{
     transform: scale(0.98);
+  }
+
+
+
+  .benefit-content{
+  
+    top: 150px;
+    background-color: #313131;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 100px;
+    color: grey;
+    display: flex;
+  }
+
+  .benefit-content h3{
+    color: white;
+  }
+
+  .benefit-content .box i{
+    margin-right: 50px;
+    margin-left: 50px;
   }
