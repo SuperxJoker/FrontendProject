@@ -839,3 +839,27 @@ footer a{
     margin-right: 50px;
     margin-left: 50px;
   }
+
+  .big-container{
+    padding-top:100px ;
+    width: 1200px;
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: flex-end;
+    position: relative;
+    left:300px
+  }
+
+  .img-fluid{
+    width: 510px;
+  }
+
+  .small-img-group{
+    display: flex;
+    
+  }
+
+  .small-img-col{
+    flex-basis: 18%;
+    cursor: pointer;
+  }
