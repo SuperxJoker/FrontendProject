@@ -897,7 +897,20 @@ footer a{
 
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    padding: 8px;
+    background-color: yellowgreen;
+    border: none;
 }
+
+.small-container2 button:hover{
+  background-color: rgb(97, 129, 31);
+}
+
+.small-container2 button:active{
+  transform: scale(0.98);
+}
+
 
 .small-container2 p{
 
@@ -928,6 +941,7 @@ footer a{
   background-color: grey;
   border-top-left-radius: 20px;
   border-top-right-radius:20px;
+  color:rgb(99, 97, 97);
 }
 
 .tabContainer .buttonContainer button:hover{
@@ -937,10 +951,81 @@ footer a{
 
 .tabContainer .tabPanel{
   height: 85%;
-  background-color: rgb(189, 188, 188);
-  padding-top: 150px;
-  text-align: center;
+  background-color:grey;
+  padding-top:30px ;
+  
   box-sizing: border-box;
   font-family:Arial, Helvetica, sans-serif ;
   display: none;
+}
+
+.tabContainer .tabPanel p{
+  margin-left:100px;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color:white;
+
+}
+
+.error-container .oops-container{
+  
+  padding: 200px 120px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-left: 30px;
+  
+
+}
+
+
+.error-container .oops-container h1{
+  height: 100px;
+  position: relative;
+  right:-100px;
+}
+
+.error-container .oops-container p{
+ 
+  position: relative;
+  top:100px;
+  left:-390px;
+
+}
+
+.error-container .oops-container a{
+ 
+  position: relative;
+  bottom:280px;
+  right:-695px;
+  text-decoration: none;
+  color: yellowgreen;
+  font-size: 24px;
+  
+
+}
+
+.error-container .oops-container a:hover{
+ 
+  
+  color: rgb(97, 131, 30);
+
+}
+
+.error-container .oops-container input{
+ 
+  position: relative;
+  bottom:200px;
+  right:-482px;
+  text-decoration: none;
+  color: yellowgreen;
+  font-size: 24px;
+  width: 35%;
+  border-radius: 20px;
+  padding: 8px;
+  border: 1px solid gray;
+  font-family: 'Times New Roman', Times, serif;
+  
+
 }
