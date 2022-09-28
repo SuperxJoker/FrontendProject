@@ -345,7 +345,7 @@
 
     <div class="icon-menu">
       <li><a href=""><i class="fa fa-search" style="font-size:20px"></i></a></li>
-      <li><a href="pages/login.html"><i class="fa fa-user" style="font-size:20px"></i></a></li>
+      <li><i id="show-login" class="fa fa-user" style="font-size:20px"></i></li>
 
 
       
@@ -366,6 +366,35 @@
       
     </div>
     </nav>
+
+    <!--Popup login form-->
+
+    <div class="popup">
+      <div class="close-btn">&times;</div>
+      <div class="form" id="form" >
+        <h2>Sign in</h2>
+        <div class="form-element">
+          <label for="email">Email</label>
+          <input type="text" id="email" placeholder="Enter email" >
+          <span id="emailText"></span>
+        </div>
+        <div class="form-element">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="Enter password">
+          <i class="fa fa-eye" id="font" onclick="togglePW()" aria-hidden="true"></i>
+
+        </div>
+        <div class="form-element">
+          <button onclick="validateEmail()">LOGIN</button>
+        </div>
+        <div class="form-element">
+          <a href="#">I don't have an account</a>
+        </div>
+        <div class="form-element">
+          <a href="#">Forgot password?</a>
+        </div>
+      </div>
+    </div>
 
 
     <!--Image slider start-->
@@ -1061,10 +1090,12 @@
     </footer>
 
 
-
+    <script src="scripts/popup.js"></script>
+    <script src="scripts/error.js"></script>
     <script src="scripts/cart.js"></script>
     <script src="scripts/load.js"></script>
     <script src="scripts/slideproducts.js"></script>
+
   
 </body>
 </html>
