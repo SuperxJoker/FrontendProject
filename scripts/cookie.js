@@ -2,6 +2,27 @@ let popUp = document.getElementById("cookiePopup");
 
 document.getElementById("acceptCookie");
 
+
+window.addEventListener("load",function(){
+   
+    showPopup();
+});
+
+function showPopup(){
+
+   
+    const timeLimit = 10;
+    let i = 0;
+    const timer = setInterval(function(){
+        i++;
+        if(i == timeLimit){
+            clearInterval(timer);
+            popUp.classList.add("show");
+        }
+        console.log(i);
+    },1000);
+}
+
 addEventListener("click", () => {
 
     let d = new Date();
