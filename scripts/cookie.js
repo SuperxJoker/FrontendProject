@@ -11,7 +11,7 @@ window.addEventListener("load",function(){
 function showPopup(){
 
    
-    const timeLimit = 10;
+    const timeLimit = 10; //seconds
     let i = 0;
     const timer = setInterval(function(){
         i++;
