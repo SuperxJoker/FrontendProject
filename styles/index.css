@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-nav{
+navs{
 
     background-color:white;
     
@@ -17,7 +17,7 @@ nav{
     
 }
 
-nav .wrapper{
+navs .wrapper{
     position: relative;
     margin: auto;
     padding: 0 30px ;
@@ -479,7 +479,7 @@ footer a{
     transform: scale(0.98);
   }
 
-  .shopping-cart::before{
+  /*.shopping-cart::before{
    
     content: attr(data-product-count);
     font-size: 12px;
@@ -489,7 +489,7 @@ footer a{
    
     
     border-radius: 9px;
-  }
+  }*/
 
 
   .heart-cart::before{
@@ -1239,3 +1239,20 @@ footer a{
 
 }
 
+
+
+#cart_count{
+  color: yellowgreen;
+  text-align: center;
+  padding: 0 0.9rem 0.1rem 0.9rem;
+  border-radius: 3rem;
+
+}
+
+.shopping-cart1{
+  padding: 3% 0 ;
+}
+
+.cart-items + .cart-items{
+  padding: 2% 0;
+}

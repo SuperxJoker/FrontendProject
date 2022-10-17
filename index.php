@@ -1,3 +1,59 @@
+<?php
+
+//start session
+
+session_start();
+
+require_once('php/CreateDb.php');
+require_once('./php/component.php');
+
+
+//create instance of Createdb class
+$database = new CreateDb("Productdb","Producttb");
+
+if(isset($_POST['add'])){
+  //print_r($_POST['product_id']);
+
+  if(isset($_SESSION['cart'])){
+
+    $item_array_id = array_column($_SESSION['cart'],'product_id');
+
+    if(in_array($_POST['product_id'],$item_array_id)){
+      echo "<script> alert('Product is already added in the cart')</script>";
+      echo "<script>window.location = 'index.php'</script>";
+
+    }else{
+
+      $count = count($_SESSION['cart']);
+      $item_array = array(
+        'product_id' => $_POST['product_id']
+      );
+
+      $_SESSION['cart'][$count] = $item_array;
+      
+
+    }
+    //print_r($_SESSION['cart']);
+
+  }else{
+    $item_array = array(
+      'product_id' => $_POST['product_id']
+    );
+
+    //Create new session variable
+    $_SESSION['cart'][0] = $item_array;
+    print_r($_SESSION['cart']);
+
+
+  }
+
+
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +77,7 @@
     
         
        <div class="wrapper">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
             <div class="logo-image">
                 <img src="images/nobgLogo.png" class="img-fluid" alt="img" style="max-width: 10rem; max-height: 5em">
         
@@ -351,14 +407,28 @@
 
       
       <li>
-        <div class="heart-cart" data-heart-count ="0">
+        <div >
         <a href=""><i class="fa fa-heart" style="font-size:20px"></i></a>
         </div>
       </li>
     
       <li>
-        <div class="shopping-cart" data-product-count="0">
-        <a href=""><i class="fa fa-shopping-bag" style="font-size:20px"></i></a>
+        <div >
+        <a href="cart.php" class="nav-item nav-link active" style="text-decoration:none"><i class="fa fa-shopping-bag" style="font-size:20px"></i>
+        <!--<span id="cart_count" class="text-warning bg-light" style="color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;">0</span>-->    
+        <?php 
+        
+        if(isset($_SESSION['cart'])){
+          $count = count($_SESSION['cart']);
+          echo "<span id=\"cart_count\" class=\"text-warning bg-light\" style=\"color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;\">$count</span>";
+        }
+        else{
+          echo "<span id=\"cart_count\" class=\"text-warning bg-light\" style=\"color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;\">0</span>";
+        }
+
+        ?>
+        
+        </a>
        <!-- <span class='badge badge-warning' id='lblCartCount'> 5 </span> -->
         </div>
       
@@ -394,13 +464,17 @@
           <button onclick="validateEmail()">LOGIN</button>
         </div>
         <div class="form-element">
-          <a href="#">I don't have an account</a>
+          <a id="show-singup" href="#">I don't have an account</a>
         </div>
         <div class="form-element">
           <a href="#">Forgot password?</a>
         </div>
       </div>
     </div>
+
+
+   
+
 
     <!--Cookie policy-->
     <div id="cookiePopup" class="wrapper2 hide">
@@ -504,226 +578,33 @@
     <section id="product1" class="section-p1">
   <h2>Popular items</h2>
   <hr>
-  <div class="pro-container">
-    <div class="pro">
-      <div>
-
-        <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-
-         
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
-    <div class="pro">
-      <div>
-         <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
-    <div class="pro">
-      <div>
-         <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
-    <div class="pro">
-      <div>
-        <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
-    <div class="pro">
-      <div>
-        <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
-    <div class="pro">
-      <div>
-        <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
-    <div class="pro">
-      <div>
-        <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
-    <div class="pro">
-      <div>
-        <a href="productpage.html">
-          <img src="images/1.jpg" alt="">
-            </a>
-
-      <div class = "des">
-        
-          <a href="productpage.html" style="text-decoration:none;color:black">
-         <h3>Product name</h3>
-         <h4>799.55$</h4>
-         </a>
-         <div>
-         <button class="btn-1 add-to-cart">BUY NOW</button>
-        </div>
-      </div>
-       <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-      <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-      </div>
-      
-        
-      
-
-  
-    </div>
+  <div class="pro-container" >
+    <?php
+      $result = $database->getData();
+      while($row = mysqli_fetch_assoc($result)){
+        component($row['product_name'],$row['product_price'],$row['product_image'],$row['id']);
+      }
+   
+    ?>
     
    
     
 
   </div>
 
-  <div class="load-info">
+  
+  <!--
 
-  </div>
+  <button onclick="loadData()" class="load-btn">Load More</button>-->
 
-  <button onclick="loadData()" class="load-btn">Load More</button>
+ 
+
+
 
  
   
     </section>
+
 
     <!--Banner OSF container-->
     <div class="banner-container">
@@ -739,210 +620,13 @@
     
     <hr>
     <div class="swiper-wrapper pro-container2">
-      <div class="swiper-slide pro2">
-        <div>
-
-          <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-
-           
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
-      <div class="swiper-slide pro2">
-        <div>
-           <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
-      <div class="swiper-slide pro2">
-        <div>
-           <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
-      <div class="swiper-slide pro2">
-        <div>
-          <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
-      <div class="swiper-slide pro2">
-        <div>
-          <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
-      <div class="swiper-slide pro2">
-        <div>
-          <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
-      <div class="swiper-slide pro2">
-        <div>
-          <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
-      <div class="swiper-slide pro2">
-        <div>
-          <a href="productpage.html">
-            <img src="images/1.jpg" alt="">
-              </a>
-
-        <div class = "des">
-          
-            <a href="productpage.html" style="text-decoration:none;color:black">
-           <h3>Product name</h3>
-           <h4>799.55$</h4>
-           </a>
-           <div>
-           <button class="btn-1 add-to-cart">BUY NOW</button>
-          </div>
-        </div>
-         <button class="btn add-to-cart"><i class="fa fa-plus" style="font-size:24px;color:green"></i></button>
-        <button class="btn add-to-heart"><i class="fa fa-heart" style="font-size:24px;color: red;"></i></button>
-        </div>
-        
-          
-        
-
-    
-      </div>
+    <?php
+      $result = $database->getData();
+      while($row = mysqli_fetch_assoc($result)){
+        component2($row['product_name'],$row['product_price'],$row['product_image'],$row['id']);
+      }
+   
+    ?>
      
      
     </div>
@@ -1113,6 +797,7 @@
     </footer>
 
     <!--Scripts-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script src="scripts/cookie.js"></script>
     <script src="scripts/popup.js"></script>
     <script src="scripts/error.js"></script>

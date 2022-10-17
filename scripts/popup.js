@@ -12,6 +12,13 @@ document.querySelector(".popup .close-btn").addEventListener("click",function(){
 });
 
 
+document.querySelector("#show-signup").addEventListener("click",function(){
+
+    document.querySelector(".popup2").classList.add("active");
+
+});
+
+
 function togglePW(){
     var password = document.querySelector('[name=password]');
     
