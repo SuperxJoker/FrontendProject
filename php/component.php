@@ -8,13 +8,16 @@ function component($productname, $productprice, $productimg,$productid){
 
         <a href=\"productpage.php\">
           <img src=\"$productimg\" alt=\"\">
+          <input type='hidden' name='product_image' value='$productimg'>
             </a>
 
       <div class = \"des\">
         
           <a href=\"productpage.php\" style=\"text-decoration:none;color:black\">
          <h3>$productname</h3>
+         <input type='hidden' name='product_name' value='$productname'>
          <h4>$ $productprice</h4>
+         <input type='hidden' name='product_price' value='$productprice'>
          </a>
 
          
@@ -54,7 +57,10 @@ function cartElement($productimg,$productname,$productprice,$productid){
                                     <small class=\"text-secondary\">Seller : Alexia</small>
                                     <h5 class=\"pt-2\">$ $productprice</h5>
                                     <button type=\"submit\" class=\"btn btn-warning\">Save for later</button>
-                                    <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
+                                    <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"del\">Remove</button>
+                                    <input type='hidden' name='product_id' value='$productid'>
+                                   
+                                   
                                 </div>
                                 <div class=\"col-md-3 py-5\">
                                     <div>
@@ -147,6 +153,24 @@ function component3($productname, $productprice, $productimg,$productid){
   </div>
   
   ";
+  echo $element;
+}
+
+
+function orderComponent($id,$ordername,$ordersurname,$totalproducts,$totalprice){
+
+  $element= "
+  <tr>
+  <th scope=\"row\">$id</th>
+  <td>$ordername</td>
+  <td>$ordersurname</td>
+  <td>$totalproducts</td>
+  <td>$totalprice</td>
+  </tr>
+  
+  
+  ";
+
   echo $element;
 }
 

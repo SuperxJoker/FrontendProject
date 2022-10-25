@@ -77,6 +77,30 @@ class CreateDb{
         }
     }
 
+    public function getcartData(){
+        $sql = "SELECT * FROM `carttb`";
+
+
+        $result = mysqli_query($this->con, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            return $result;
+        }
+    }
+
+    public function getorderData(){
+        $sql = "SELECT * FROM `ordertb`";
+
+
+        $result = mysqli_query($this->con, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            return $result;
+        }
+    }
+
+
+
 }
 
 

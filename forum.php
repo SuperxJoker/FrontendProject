@@ -1,52 +1,16 @@
 <?php 
-
 session_start();
 
 require_once("php/CreateDb.php");
 require_once("php/component.php");
 
+
+
 $db = new CreateDb("Productdb","Producttb");
 
-$conn = new mysqli('localhost','root','','productdb');
-
-/*if(isset($_POST['remove'])){
-  
-    
-    if($_GET['action'] == 'remove'){
-        foreach($_SESSION['cart'] as $key => $value){
-            if($value["product_id"] == $_GET['id']){
-              
-              
-                //unset($_SESSION['cart'][$key]);
-                
-                echo "<script>alert('Product has been removed')</script>";
-                echo "<script>window.location = 'cart.php'</script>";
-            }
-        }
-        
-
-
-    }
-}*/
-
-
-if(isset($_POST['del'])){
-  $id = $_POST['product_id'];
-  $delquery = "DELETE FROM carttb WHERE id=$id";
-  $result = mysqli_query($conn,$delquery);
-  if($result){
-  echo "<script>alert('Product has been removed')</script>";
-  echo "<script>window.location = 'cart.php'</script>";
-}
-else{
-  echo "<script>alert('Product not removed')</script>";
-  echo "<script>window.location = 'cart.php'</script>";
-}
-};
 
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -413,7 +377,7 @@ else{
         <div >
         <a href="cart.php"  style="text-decoration:none"><i class="fa fa-shopping-bag" style="font-size:20px"></i>
         <!--<span id="cart_count" class="text-warning bg-light" style="color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;">0</span>-->    
-       
+        
         
         </a>
        <!-- <span class='badge badge-warning' id='lblCartCount'> 5 </span> -->
@@ -427,106 +391,24 @@ else{
 
 
 
-    <div class="container-fluid">
-        <div class="row px-5">
-            <div class="col-md-7">
-                <div class="shopping-cart1" style="padding:5% 0";>
-                    <h6>MY CART</h6>
-                    <hr>
-                    <?php 
+    <form action="insert.php" method="POST" class="form_submit">
+        <div class="submit_items">
+        <label>Product name:</label><input type="text" name="name"><br>
+        <label>Product price:</label><input type="text" name="price"><br>
+        <input type='hidden' name='product_id' value='$productid'>
 
-                    $total = 0;
-                    
-                 
-                   
-
-                  
-
-                   /*while($row = mysqli_fetch_assoc($result)){
-                        foreach($product_id as $id){
-                            if($row['id'] == $id){
-                                cartElement($row['product_image'],$row['product_name'],$row['product_price'],$row['id']);
-                                $total = $total  + (int)$row['product_price'];
-                            }
-                        }
-                    }*/
-
-                    //$result = $db->getcartData();
-                    if($result = $db->getcartData()){
-                    while($row = mysqli_fetch_assoc($result)){
-                      cartElement($row['product_image'],$row['product_name'],$row['product_price'],$row['id']);
-                      $total = $total  + (int)$row['product_price'];
-                    }
-                    
-                  }else{
-                    echo "<h5>Cart is empty</h5>";
-                  }
-                    
-                    ?>
-
-                </div>
-
-            </div>
-            <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25" >
-
-            <div class="pt-4" >
-                <h6>PRICE DETAILS</h6>
-                <hr>
-                <div class="row price-details">
-                    <div class="col-md-6">
-                    <?php 
-                        if(isset($_SESSION['cart'])){
-                            $count = count($_SESSION['cart']);
-                            echo "<h6>Price ($count items) </h6>";
-                        }else{
-                            echo "<h6>Price (0 items) </h6>";
-                        }
-                        
-                    ?>
-                    <h6>Delivery Charges</h6>
-                    <hr>
-                    <h6>Amount Payable</h6>
-                    <hr>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>
-                            $<?php echo $total;?>
-                        </h6>
-                        <h6 class="text-success">FREE</h6>
-                        <hr>
-                        <h6>$<?php 
-                            echo $total;
-                        ?></h6>
-                        <hr>
-                    </div>
-                    
-                    <form action="checkout.php" method="POST" class="mt-3 formsubmit">
-                      <div class="col-md-10 submititems">
-                        <label>Name:</label><input class="form-control " type="text" name="name" placeholder="Enter name"><br>
-                        <label>Surname:</label><input class="form-control " type="text" name="surname" placeholder="Enter surname"><br>
-                        <button class="col-md-10 mt-3 mb-4 btn btn-success" type="submit" name="submit">Submit</button>
-                     </div>
-                    </form>
-
-                    
-                </div>
-            </div>
-
-            </div>
-            
+        <button type="submit" name="submit">Submit</button>
+        <div class="home-page">
+        <a href="index.php" style="padding: 0 3%;font-size:20px;font-weight:600;color:#DA7171;position:relative;top:70px">Go back to home page</a>
         </div>
-        
-    </div>
+        </div>
+       
 
-    <div class="home-page">
-      <a href="index.php" style="padding: 0 3%;font-size:20px;font-weight:600;color:yellowgreen;">Go back to home page</a>
-    </div>
 
-    <div class="orders-page">
-      <a href="orders.php" style="padding: 0 3%;font-size:20px;font-weight:600;color:yellowgreen;top:10px"><i class="fa fa-clipboard" style="color:yellowgreen"></i>  See past orders</a>
-    </div>
 
-   <hr>
+
+    </form>
+   
 
     <footer>
       <div class ="main-content">

@@ -402,6 +402,11 @@ if(isset($_POST['add'])){
      <div class="icon-menu">
        <li><a href=""><i class="fa fa-search" style="font-size:20px"></i></a></li>
        <li><a href="pages/login.html"><i class="fa fa-user" style="font-size:20px"></i></a></li>
+       <li>
+        <div >
+        <a href="forum.php"><i class="fa fa-plus" style="font-size:23px"></i></a>
+        </div>
+      </li>
  
  
        
@@ -415,17 +420,7 @@ if(isset($_POST['add'])){
        <div >
         <a href="cart.php" class="nav-item nav-link active" style="text-decoration:none"><i class="fa fa-shopping-bag" style="font-size:20px"></i>
         <!--<span id="cart_count" class="text-warning bg-light" style="color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;">0</span>-->    
-        <?php 
-        
-        if(isset($_SESSION['cart'])){
-          $count = count($_SESSION['cart']);
-          echo "<span id=\"cart_count\" class=\"text-warning bg-light\" style=\"color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;\">$count</span>";
-        }
-        else{
-          echo "<span id=\"cart_count\" class=\"text-warning bg-light\" style=\"color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;\">0</span>";
-        }
-
-        ?>
+      
         
         </a>
        <!-- <span class='badge badge-warning' id='lblCartCount'> 5 </span> -->

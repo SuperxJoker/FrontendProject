@@ -11,18 +11,21 @@ require_once('./php/component.php');
 //create instance of Createdb class
 $database = new CreateDb("Productdb","Producttb");
 
+$conn = new mysqli('localhost','root','','productdb');
+
 if(isset($_POST['add'])){
   //print_r($_POST['product_id']);
+
+  
+  $product_name = $_POST['product_name'];
+  $product_price = $_POST['product_price'];
+  $product_image = $_POST['product_image'];
 
   if(isset($_SESSION['cart'])){
 
     $item_array_id = array_column($_SESSION['cart'],'product_id');
 
-    if(in_array($_POST['product_id'],$item_array_id)){
-      echo "<script> alert('Product is already added in the cart')</script>";
-      echo "<script>window.location = 'index.php'</script>";
-
-    }else{
+   
 
       $count = count($_SESSION['cart']);
       $item_array = array(
@@ -30,9 +33,12 @@ if(isset($_POST['add'])){
       );
 
       $_SESSION['cart'][$count] = $item_array;
+
+      $insert_product = mysqli_query($conn, "INSERT INTO `carttb`( product_name, product_price, product_image) VALUES('$product_name', '$product_price', '$product_image')");
+
       
 
-    }
+    
     //print_r($_SESSION['cart']);
 
   }else{
@@ -401,9 +407,15 @@ if(isset($_POST['add'])){
  
 
     <div class="icon-menu">
+       
       <li><a href=""><i class="fa fa-search" style="font-size:20px"></i></a></li>
       <li><i id="show-login" class="fa fa-user" style="font-size:20px"></i></li>
 
+      <li>
+        <div >
+        <a href="forum.php"><i class="fa fa-plus" style="font-size:23px"></i></a>
+        </div>
+      </li>
 
       
       <li>
@@ -416,17 +428,7 @@ if(isset($_POST['add'])){
         <div >
         <a href="cart.php" class="nav-item nav-link active" style="text-decoration:none"><i class="fa fa-shopping-bag" style="font-size:20px"></i>
         <!--<span id="cart_count" class="text-warning bg-light" style="color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;">0</span>-->    
-        <?php 
         
-        if(isset($_SESSION['cart'])){
-          $count = count($_SESSION['cart']);
-          echo "<span id=\"cart_count\" class=\"text-warning bg-light\" style=\"color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;\">$count</span>";
-        }
-        else{
-          echo "<span id=\"cart_count\" class=\"text-warning bg-light\" style=\"color:yellowgreen;text-align: center;border-radius: 3rem;font-size:19px;font-weight:600;\">0</span>";
-        }
-
-        ?>
         
         </a>
        <!-- <span class='badge badge-warning' id='lblCartCount'> 5 </span> -->
@@ -797,7 +799,7 @@ if(isset($_POST['add'])){
     </footer>
 
     <!--Scripts-->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  
     <script src="scripts/cookie.js"></script>
     <script src="scripts/popup.js"></script>
     <script src="scripts/error.js"></script>
